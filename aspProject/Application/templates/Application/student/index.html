@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Simple Sidebar - Start Bootstrap Template</title>
+        <!-- Bootstrap Core CSS -->
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="/static/css/simple-sidebar.css" rel="stylesheet">
+        <script src="/static/js/jquery.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="wrapper">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                    </li>
+                    <li>
+                    </li>
+                    <li>
+                        <a href="#" id="btn-1" data-toggle="collapse" data-target="#submenu1" aria-expanded="false">Course Management</a>
+                        <ul class="nav collapse" id="submenu1" role="menu" aria-labelledby="btn-1">
+                            <li><a href="/admin/allcourses">View all courses</a></li>
+                            <li><a href="/admin/course">Add new course</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" id="btn-2" data-toggle="collapse" data-target="#submenu2" aria-expanded="false">Student Management</a>
+                        <ul class="nav collapse" id="submenu2" role="menu" aria-labelledby="btn-1">
+                            <li><a href="/admin/allstudents">View all students</a></li>
+                            <li><a href="/admin/student">Add new student</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" id="btn-3" data-toggle="collapse" data-target="#submenu3" aria-expanded="false">Instructor Management</a>
+                        <ul class="nav collapse" id="submenu3" role="menu" aria-labelledby="btn-1">
+                            <li><a href="/admin/allinstructors">View all instructors</a></li>
+                            <li><a href="/admin/instructor">Add new instructor</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /#sidebar-wrapper -->
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div id="mainContent">
+                        <div class="row">
+                            {% block content %}
+                            {% endblock content %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+    </body>
+</html>

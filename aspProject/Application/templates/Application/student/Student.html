@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+{% extends "Application/base.html" %}
+{% load staticfiles %}
+{% block sidebar %}
+     <li>
+                    <a href="{% url 'Application:update'%}">Update Info</a>
+                </li>
+                <li>
+                    <a href="Application/student/updatePassword.html">Update Password</a>
+                </li>
+                <li>
+                    <a href="#">View Classes</a>
+                </li>
+
+{% endblock sidebar %}
+{% block content %}
+<h1>Student Portal</h1>
+<h1>Welcome:{{users}}</h1>
+{% endblock content %}
+</body>
+</html>

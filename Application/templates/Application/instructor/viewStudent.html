@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+    {% extends "Application/instructor/instructor.html" %}
+    {% load staticfiles %}
+
+        {% block content %}
+        <div style="margin-top: 5%; width: 100%">
+        <table class="table">
+            <thead style="background-color: #8B9298; color: #2c4daa">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email </th>
+                </tr>
+            </thead>
+              {% for view in viewStudent %}
+            <tbody>
+                <tr class="info ">
+                    <td>{{view.student.firstName}}</td>
+                    <td>{{view.student.lastName}}</td>
+                    <td>{{view.student.email}}</td>
+                </tr>
+            </tbody>
+              {% endfor %}
+        </table>
+
+     <ul class="pagination">
+     {% if viewStudent.has_previous %}
+              <li><a href="?page={{ viewStudent.previous_page_number }}">Previous</a></li>
+          {% endif %}
+          {% for pg in viewStudent.paginator.page_range %}
+              {% if viewStudent.number == pg %}
+                  <li class="active"><a href="?page={{ pg }}">{{ pg }}</a></li>
+              {% else %}
+                  <li><a href="?page={{ pg }}">{{ pg }}</a></li>
+              {% endif %}
+          {% endfor %}
+          {% if viewStudent.has_next %}
+              <li><a href="?page={{ viewStudent.next_page_number }}">Next</a></li>
+          {% endif %}
+      </ul>
+        {% endblock content %}
+    </div>
+    </body>
+</html>

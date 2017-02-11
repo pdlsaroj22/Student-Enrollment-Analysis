@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+{% extends "Application/base.html" %}
+{% load staticfiles %}
+{% block About %}
+<a href="{% url 'Application:About_us_instructor' %}">About</a>
+{% endblock About %}
+{% block Contact %}
+<a href="{% url 'Application:Contact_us' %}">Contact Us</a>
+{% endblock Contact %}
+{% block Home %}
+<a href="{% url 'Application:Home_instructor' %}">Home</a>
+{% endblock Home %}
+{% block sidebar %}
+     <li>
+                    <a href="{% url 'Application:updateInstructor' %}">Update Info</a>
+                </li>
+                <li>
+                    <a href="{% url 'Application:change_password_Instructor' %}">Update Password</a>
+                </li>
+                <li>
+                    <a href="{% url 'Application:my_classes' %}">View Classes</a>
+                </li>
+
+{% endblock sidebar %}
+{% block content %}
+<h1>Instructor Portal</h1>
+<h1>Welcome:{{users}}</h1>
+{% endblock content %}
+
+
+</body>
+</html>

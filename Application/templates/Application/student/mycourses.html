@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+    {% extends "Application/student/Student.html" %}
+        {% block content %}
+        <div style="margin-top: 5%">
+        <table class="table">
+            <thead style="background-color: #8B9298; color: #2c4daa">
+                <tr>
+                    <th>Course Name</th>
+                    <th>Course Code</th>
+                    <th>Course Fee</th>
+                    <th>Instructor</th>
+                       <th></th>
+                </tr>
+            </thead>
+              {% for student_course in enrolledCourses %}
+            <tbody>
+                <tr class="info ">
+                    <td>{{student_course.course.course_name}}</td>
+                    <td>{{student_course.course.course_code}}</td>
+                    <td>{{student_course.course.course_fee}}</td>
+                    <td>{{student_course.course.instructor.firstName}} {{student_course.course.instructor.lastName}}</td>
+                    <td><a href="/student/remove/{{ student_course.id }}"> <p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-danger btn-xs"></span>Remove</button></p></a></td>
+                </tr>
+            </tbody>
+              {% endfor %}
+        </table>
+
+     <ul class="pagination">
+     {% if courses.has_previous %}
+              <li><a href="?page={{ courses.previous_page_number }}">Previous</a></li>
+          {% endif %}
+          {% for pg in courses.paginator.page_range %}
+              {% if courses.number == pg %}
+                  <li class="active"><a href="?page={{ pg }}">{{ pg }}</a></li>
+              {% else %}
+                  <li><a href="?page={{ pg }}">{{ pg }}</a></li>
+              {% endif %}
+          {% endfor %}
+          {% if courses.has_next %}
+              <li><a href="?page={{ courses.next_page_number }}">Next</a></li>
+          {% endif %}
+      </ul>
+        {% endblock %}
+    </div>
+    </body>
+</html>

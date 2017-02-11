@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+{% extends "Application/base.html" %}
+{% load staticfiles %}
+{% block About %}
+<a href="{% url 'Application:About_us' %}">About</a>
+{% endblock About %}
+{% block Contact %}
+<a href="{% url 'Application:Contact' %}">Contact Us</a>
+{% endblock Contact %}
+{% block Home %}
+<a href="{% url 'Application:Home' %}">Home</a>
+{% endblock Home %}
+{% block sidebar %}
+     <li>
+                    <a href="{% url 'Application:update'%}">Update Info</a>
+                </li>
+                <li>
+                    <a href="{% url 'Application:change_password' %}">Update Password</a>
+                </li>
+                <li>
+                    <a href="{% url 'Application:view_all_courses' %}">View Courses</a>
+                </li>
+                    <li>
+                    <a href="{% url 'Application:my_courses' %}">My Courses</a>
+                </li>
+
+{% endblock sidebar %}
+<div style="margin-top:50px">
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+    {% extends "Application/student/Student.html" %}
+{% load staticfiles %}
+{#{% block sidebar %}#}
+{#     <li>#}
+{#                    <a href="#">Update Info</a>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a href="#">Change Password</a>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a href="#">View Classes</a>#}
+{#                </li>#}
+{##}
+{#{% endblock sidebar %}#}
+
+        {% block content %}
+        <div style="margin-top: 5%; width: 100%">
+            {% if fees_paid == True %}
+             <div class="alert alert-success">
+                 <strong>Your fees have been paid</strong>
+             </div>
+            {% else %}
+            <div class="alert alert-danger">
+            <strong>Please pay the dues on time</strong>
+            </div>
+            {% endif %}
+        <table class="table">
+            <thead style="background-color: #8B9298; color: #2c4daa">
+                <tr>
+                    <th>Course Name</th>
+                    <th>Course Code</th>
+                    <th>Course Fee</th>
+                    <th>Instructor</th>
+                    <th></th>
+                </tr>
+            </thead>
+              {% for course in not_enrolled_courses %}
+            <tbody>
+                <tr class="info ">
+                    <td>{{course.course_name}}</td>
+                    <td>{{course.course_code}}</td>
+                    <td>{{course.course_fee}}</td>
+                    <td>{{course.instructor.firstName}} {{course.instructor.lastName}}</td>
+                    <td><a href="/student/enroll/{{ course.course_name }}/{{course.id}}"> <p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs"></span>Enroll</button></p></a></td>
+                </tr>
+            </tbody>
+              {% endfor %}
+        </table>
+
+     <ul class="pagination">
+     {% if not_enrolled_courses.has_previous %}
+              <li><a href="?page={{ not_enrolled_courses.previous_page_number }}">Previous</a></li>
+          {% endif %}
+          {% for pg in not_enrolled_courses.paginator.page_range %}
+              {% if not_enrolled_courses.number == pg %}
+                  <li class="active"><a href="?page={{ pg }}">{{ pg }}</a></li>
+              {% else %}
+                  <li><a href="?page={{ pg }}">{{ pg }}</a></li>
+              {% endif %}
+          {% endfor %}
+          {% if not_enrolled_courses.has_next %}
+              <li><a href="?page={{ not_enrolled_courses.next_page_number }}">Next</a></li>
+          {% endif %}
+      </ul>
+        {% endblock %}
+    </div>
+    </body>
+</html>
